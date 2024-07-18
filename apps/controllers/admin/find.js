@@ -16,6 +16,7 @@ const findAdmin = async (req, res) => {
                 'userId',
                 'userName',
                 'userEmail',
+                'userRole',
                 'userWhatsAppNumber',
                 'createdAt',
                 'updatedAt'

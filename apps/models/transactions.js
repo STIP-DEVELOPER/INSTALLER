@@ -14,10 +14,6 @@ exports.TransactionsModel = _1.sequelize.define('transactions', {
         allowNull: false,
         defaultValue: (0, sequelize_1.UUIDV4)()
     },
-    transactionPrice: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false
-    },
     transactionOrderId: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
@@ -26,9 +22,25 @@ exports.TransactionsModel = _1.sequelize.define('transactions', {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
     },
-    transactionOngkirPrice: {
-        type: sequelize_1.DataTypes.INTEGER,
+    transactionPrice: {
+        type: sequelize_1.DataTypes.DECIMAL,
         allowNull: false
+    },
+    transactionPymenType: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true
+    },
+    transactionVirtualAccount: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true
+    },
+    transactionExpiryTime: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true
+    },
+    transactionStatus: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true
     }
 }, {
     ..._1.sequelize,

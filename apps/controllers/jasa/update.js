@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateTransaction = void 0;
+exports.updateJasa = void 0;
 const http_status_codes_1 = require("http-status-codes");
 const response_1 = require("../../utilities/response");
 const sequelize_1 = require("sequelize");
 const requestCheker_1 = require("../../utilities/requestCheker");
-const transactions_1 = require("../../models/transactions");
-const updateTransaction = async (req, res) => {
+const jasa_1 = require("../../models/jasa");
+const updateJasa = async (req, res) => {
     const requestBody = req.body;
     const emptyField = (0, requestCheker_1.requestChecker)({
-        requireList: ['transactionId'],
+        requireList: ['jasaId'],
         requestData: requestBody
     });
     if (emptyField.length > 0) {
@@ -18,10 +18,10 @@ const updateTransaction = async (req, res) => {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json(response);
     }
     try {
-        const result = await transactions_1.TransactionsModel.findOne({
+        const result = await jasa_1.JasaModel.findOne({
             where: {
                 deleted: { [sequelize_1.Op.eq]: 0 },
-                transactionOrderId: { [sequelize_1.Op.eq]: requestBody.transactionOrderId }
+                jasaId: { [sequelize_1.Op.eq]: requestBody.jasaId }
             }
         });
         if (result == null) {
@@ -30,26 +30,20 @@ const updateTransaction = async (req, res) => {
             return res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(response);
         }
         const newData = {
-            ...(requestBody.transactionVirtualAccount.length > 0 && {
-                transactionVirtualAccount: requestBody.transactionVirtualAccount
+            ...(requestBody.jasaName.length > 0 && {
+                jasaName: requestBody.jasaName
             }),
-            ...(requestBody.transactionPrice.toString().length > 0 && {
-                transactionPrice: requestBody.transactionPrice
+            ...(requestBody.jasaDescription.length > 0 && {
+                jasaDescription: requestBody.jasaDescription
             }),
-            ...(requestBody.transactionPymenType.length > 0 && {
-                transactionPymenType: requestBody.transactionPymenType
-            }),
-            ...(requestBody.transactionExpiryTime.length > 0 && {
-                transactionExpiryTime: requestBody.transactionExpiryTime
-            }),
-            ...(requestBody.transactionUserId.length > 0 && {
-                transactionUserId: requestBody.transactionUserId
+            ...(requestBody.jasaPrice.toString().length > 0 && {
+                jasaPrice: requestBody.jasaPrice
             })
         };
-        await transactions_1.TransactionsModel.update(newData, {
+        await jasa_1.JasaModel.update(newData, {
             where: {
                 deleted: { [sequelize_1.Op.eq]: 0 },
-                transactionId: { [sequelize_1.Op.eq]: requestBody.transactionId }
+                jasaId: { [sequelize_1.Op.eq]: requestBody.jasaId }
             }
         });
         const response = response_1.ResponseData.default;
@@ -62,4 +56,4 @@ const updateTransaction = async (req, res) => {
         return res.status(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR).json(response);
     }
 };
-exports.updateTransaction = updateTransaction;
+exports.updateJasa = updateJasa;

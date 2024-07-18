@@ -103,7 +103,7 @@ const findDetailOrder = async (req, res) => {
                     where: {
                         deleted: { [sequelize_1.Op.eq]: 0 }
                     },
-                    attributes: ['userName', 'userEmail', 'userWhatsAppNumber', 'userCoin']
+                    attributes: ['userName', 'userEmail', 'userWhatsAppNumber']
                 }
             ]
         });

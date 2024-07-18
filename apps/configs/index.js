@@ -14,6 +14,8 @@ exports.CONFIG = {
     env: process.env.APP_ENV,
     port: process.env.APP_PORT ?? 8000,
     log: process.env.APP_LOG === 'true',
+    midtransServerKey: process.env.MIDTRANS_SERVER_KEY,
+    midtransUrl: process.env.MIDTRANS_URL,
     ipBlackList: JSON.parse(process.env.IP_BLACK_LIST ?? '[]'),
     secret: {
         keyEncryption: process.env.SECRET_KEY_ENCRYPTION,
@@ -29,8 +31,7 @@ exports.CONFIG = {
             database: process.env.DB_NAME,
             host: process.env.DB_HOST,
             dialect: process.env.DB_DIALECT,
-            logging: process.env.DB_LOG === 'true',
-            // port: 8889
+            logging: process.env.DB_LOG === 'true'
         },
         testing: {
             username: process.env.DB_USER_NAME,

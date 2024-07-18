@@ -17,6 +17,8 @@ const myAddressRouter_1 = require("./myAddressRouter");
 const adminRouter_1 = require("./adminRouter");
 const bankSettingRouter_1 = require("./bankSettingRouter");
 const myProfileRouter_1 = require("./myProfileRouter");
+const jasaRouter_1 = require("./jasaRouter");
+const paymentRouter_1 = require("./paymentRouter");
 const appRouterV1 = (app) => {
     app.get('/api/v1', async (req, res) => await (0, controllers_1.index)(req, res));
     (0, upload_file_route_1.uploadFileRoutes)(app);
@@ -34,5 +36,7 @@ const appRouterV1 = (app) => {
     (0, settingRouter_1.settingRouters)(app);
     (0, notificationRouter_1.notificationRoutes)(app);
     (0, bankSettingRouter_1.bankSettingRouter)(app);
+    (0, jasaRouter_1.jasaRouters)(app);
+    (0, paymentRouter_1.paymentRoutes)(app);
 };
 exports.appRouterV1 = appRouterV1;
