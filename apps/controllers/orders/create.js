@@ -67,7 +67,7 @@ const createOrder = async (req, res) => {
         const data = {
             transaction_details: {
                 order_id: orderId,
-                gross_amount: requestBody?.orderProductPrice
+                gross_amount: requestBody?.orderTotalProductPrice
             },
             credit_card: {
                 secure: true
