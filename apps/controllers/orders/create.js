@@ -17,7 +17,7 @@ const user_1 = require("../../models/user");
 const createOrder = async (req, res) => {
     const requestBody = req.body;
     const emptyField = (0, requestCheker_1.requestChecker)({
-        requireList: ['orderProductId', 'orderOngkirPrice'],
+        requireList: ['orderProductId'],
         requestData: requestBody
     });
     if (emptyField.length > 0) {
@@ -84,8 +84,6 @@ const createOrder = async (req, res) => {
                 Authorization: `Basic ${authToken}`
             }
         });
-        requestBody.orderTotalProductPrice =
-            product?.productPrice + requestBody.orderOngkirPrice;
         requestBody.orderUserId = req.body?.user?.userId;
         requestBody.orderId = orderId;
         console.log(requestBody);
