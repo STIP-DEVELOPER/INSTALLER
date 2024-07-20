@@ -7,7 +7,7 @@ const configs_1 = require("../../configs");
 const uploadFile = async (req, res) => {
     try {
         const filePath = req.file.path;
-        const fileUrl = `${configs_1.CONFIG.appUrl}:8000/api/v1/${filePath}`;
+        const fileUrl = `https://jasaapk.us/test/api/v1/${filePath}`;
         res.json({ message: 'File uploaded successfully!', fileUrl });
     }
     catch (error) {
